@@ -13,53 +13,46 @@
   <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --ink:#0f172a;       /* ana metin */
-      --muted:#64748b;     /* ikincil metin */
-      --line:#e2e8f0;      /* çizgiler */
-      --bg:#f1f5f9;        /* sayfa zemin (açık gri) */
-      --bg-card:#ffffff;   /* kartlar */
-      --accent:#111827;    /* vurgu / butonlar */
+      --ink:#0f172a;     /* ana metin */
+      --muted:#64748b;   /* ikincil metin */
+      --line:#e2e8f0;    /* ayraç çizgi */
+      --bg:#f1f5f9;      /* sayfa zemini */
+      --accent:#111827;  /* vurgu / butonlar */
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       margin:0; color:var(--ink); background:var(--bg); line-height:1.65;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    /* ---------- Sol Üst Hover Menü ---------- */
-    .corner-menu{
-      position:fixed; top:14px; left:14px; z-index:20;
-    }
+    /* ---------- Sol Üst Tıkla-Aç/Kapat Menü ---------- */
+    .corner-menu{ position:fixed; top:14px; left:14px; z-index:30; }
     .menu-trigger{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px;
-      background:rgba(255,255,255,.9); backdrop-filter:saturate(140%) blur(6px);
-      border:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:14px;
-      box-shadow:0 6px 18px rgba(15,23,42,.08);
+      display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+      padding:8px 12px; border-radius:999px; font-size:14px;
+      background:rgba(255,255,255,.92); color:var(--ink);
+      border:1px solid var(--line); text-decoration:none;
+      box-shadow:0 6px 18px rgba(15,23,42,.08); user-select:none;
     }
-    .menu-trigger:hover{background:#fff}
     .menu-panel{
-      position:absolute; inset:auto auto auto 0; transform:translateY(10px);
-      min-width:240px; padding:10px;
+      position:absolute; top:48px; left:0; width:260px; display:none;
       background:#fff; border:1px solid var(--line); border-radius:12px;
-      box-shadow:0 20px 40px rgba(15,23,42,.14);
-      display:none;
+      box-shadow:0 20px 40px rgba(15,23,42,.14); padding:10px;
     }
-    .corner-menu:hover .menu-panel{ display:block; }
-    .menu-list{list-style:none; padding:6px; margin:0; display:grid; gap:6px}
+    .menu-panel.open{ display:block; }
+    .menu-list{ list-style:none; padding:6px; margin:0; display:grid; gap:6px; }
     .menu-list a{
-      display:flex; justify-content:space-between; align-items:center;
-      text-decoration:none; color:var(--ink);
+      display:block; text-decoration:none; color:var(--ink);
       padding:10px 12px; border-radius:10px;
     }
     .menu-list a:hover{ background:#f8fafc; }
 
-    /* ---------- Header (Hero) ---------- */
+    /* ---------- Kapak (Hero) ---------- */
     header{
       position:relative; display:grid; place-items:center;
-      padding:70px 20px 56px;
-      min-height:clamp(420px, 52vh, 560px);
+      padding:70px 20px 56px; min-height:clamp(420px, 52vh, 560px);
       text-align:center; color:#fff; border-bottom:1px solid var(--line);
       background:url('https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true') center/cover no-repeat;
     }
@@ -67,7 +60,7 @@
       content:""; position:absolute; inset:0;
       background:linear-gradient(180deg, rgba(0,0,0,.62), rgba(0,0,0,.58)); z-index:1;
     }
-    .header-content{position:relative; z-index:2; max-width:980px}
+    .header-content{ position:relative; z-index:2; max-width:980px; }
     .badge{
       display:inline-block; padding:7px 14px; border-radius:999px;
       font-size:13px; font-weight:700; letter-spacing:.25px;
@@ -82,9 +75,11 @@
     }
     h1{
       margin:0 0 8px 0; line-height:1.15;
-      font-size:clamp(36px, 6.3vw, 50px); font-weight:700;
-      text-transform:uppercase; text-shadow:0 2px 10px rgba(0,0,0,.45);
+      font-size:clamp(36px, 6.2vw, 50px); font-weight:700; text-shadow:0 2px 10px rgba(0,0,0,.45);
     }
+    /* İsim biçimi: “Sertan KIRIK” (KIRIK büyük) */
+    .name .last{ text-transform:uppercase; letter-spacing:.4px; }
+
     .subtitle{
       margin:0 0 18px 0; font-size:clamp(16px, 2.6vw, 18px);
       color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5);
@@ -96,35 +91,52 @@
       color:#fff; background:var(--accent);
       transition:transform .18s ease, box-shadow .18s ease;
     }
-    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 22px rgba(15,23,42,.14)}
-    .btn.outline{background:transparent; color:#fff; border-color:rgba(255,255,255,.9)}
-    .btn.outline:hover{background:rgba(255,255,255,.1)}
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(15,23,42,.14); }
+    .btn.outline{ background:transparent; color:#fff; border-color:rgba(255,255,255,.9); }
+    .btn.outline:hover{ background:rgba(255,255,255,.1); }
 
     /* ---------- İçerik ---------- */
-    section{scroll-margin-top:84px}
-    .wrap{max-width:880px; margin:0 auto; padding:36px 20px}
-    h2{margin:0 0 14px 0; font-size:26px}
-    .muted{color:var(--muted)}
-    .card{
-      border:1px solid var(--line); border-radius:14px; padding:18px; background:var(--bg-card);
-      box-shadow:0 10px 28px rgba(15,23,42,.06);
-    }
+    section{ scroll-margin-top:84px; }
+    .wrap{ max-width:880px; margin:0 auto; padding:38px 20px; }
 
-    /* ---------- Uyarı/Not ---------- */
-    .callout{
-      background:#e2e8f0; border:1px solid #cbd5e1; border-left:4px solid #334155;
-      border-radius:10px; padding:12px 14px; color:var(--muted);
+    /* Profesyonel bölüm başlıkları ve ince ayraçlar */
+    .section{
+      padding:22px 0 8px;
+      border-bottom:1px solid var(--line);
     }
+    .section h2{
+      margin:0 0 10px 0; font-size:24px; font-weight:700; letter-spacing:.2px;
+    }
+    .meta-row{
+      display:flex; flex-wrap:wrap; gap:14px 22px; font-size:15px; color:var(--muted);
+    }
+    .meta-item{ display:flex; gap:8px; align-items:center; }
+    .meta-key{ font-weight:600; color:#475569; } /* koyu gri */
 
-    /* ---------- Footer ---------- */
+    /* Satır içi aksiyon alanları */
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
+    .badge-link{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      background:#111827; color:#fff; text-decoration:none; font-size:14px;
+      border:1px solid #111827;
+    }
+    .badge-link.alt{
+      background:transparent; color:#111827; border-color:#111827;
+    }
+    .badge-link:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(15,23,42,.12); }
+
+    /* Uyarı/Not alanı (metinsiz sade çizgi görünümü) */
+    .note{ font-size:14px; color:var(--muted); margin-top:12px; }
+
+    /* Footer */
     footer{
       padding:28px 20px; text-align:center; color:var(--muted);
       background:var(--bg); border-top:1px solid var(--line);
     }
 
-    /* yardımcı */
-    a{color:inherit}
-    strong{font-weight:600}
+    a{ color:inherit }
+    strong{ font-weight:600 }
   </style>
 
   <!-- JSON-LD -->
@@ -146,17 +158,16 @@
 </head>
 
 <body>
-  <!-- Sol Üst Hover Menü -->
-  <div class="corner-menu" aria-label="Site menüsü">
-    <a class="menu-trigger" href="#" onclick="return false;">☰ Menü</a>
-    <div class="menu-panel" role="menu" aria-label="Gezinme">
+  <!-- Sol Üst Menü (tıkla-aç/kapat) -->
+  <div class="corner-menu">
+    <button class="menu-trigger" id="menuBtn" aria-expanded="false" aria-controls="menuPanel">☰ Menü</button>
+    <nav class="menu-panel" id="menuPanel" role="menu" aria-label="Gezinme">
       <ul class="menu-list">
-        <!-- Bu sayfaları ayrı dosyalar olarak ekleyebilirsin -->
-        <li><a href="calisma-alanlari.html">Çalışma Alanları <span>→</span></a></li>
-        <li><a href="makaleler.html" target="_blank" rel="noopener">Makaleler <span>↗</span></a></li>
-        <li><a href="yuksek-mahkeme-kararlari.html">Yüksek Mahkeme Kararları <span>→</span></a></li>
+        <li><a href="calisma-alanlari.html">Çalışma Alanları</a></li>
+        <li><a href="makaleler.html" target="_blank" rel="noopener">Makaleler</a></li>
+        <li><a href="yuksek-mahkeme-kararlari.html">Yüksek Mahkeme Kararları</a></li>
       </ul>
-    </div>
+    </nav>
   </div>
 
   <!-- HERO -->
@@ -164,53 +175,46 @@
     <div class="header-content">
       <div class="badge">Çanakkale Barosu</div>
       <div class="title-top">Avukat</div>
-      <h1>Sertan KIRIK</h1>
+      <h1 class="name"><span class="first">Sertan</span> <span class="last">KIRIK</span></h1>
       <p class="subtitle">Hukuki Danışmanlık &amp; Dava Takibi</p>
       <div class="stack-v" aria-label="Hızlı işlemler">
-        <a class="btn" href="#iletisim">Randevu / İletişim</a>
-        <a class="btn outline" href="#hakkinda">Hakkımda</a>
+        <a class="btn" href="#randevu">Randevu</a>
+        <a class="btn outline" href="#iletisim">İletişim</a>
       </div>
     </div>
   </header>
 
   <!-- SADE İÇERİK -->
   <main class="wrap" role="main">
-    <!-- HAKKIMDA (kısa ve derli toplu) -->
-    <section id="hakkinda">
-      <h2>Hakkımda</h2>
-      <div class="card">
-        <p>
-          <strong>Av. Sertan KIRIK</strong>, Çanakkale’de bireylere ve şirketlere
-          <strong>hukuki danışmanlık</strong>, <strong>sözleşme hazırlanması</strong> ve
-          <strong>dava takibi</strong> hizmetleri sunar. Her dosyada müvekkil yararı ve şeffaf iletişim esastır.
-        </p>
-        <p class="muted">
-          Çanakkale Barosu • Sicil No: <strong>1111</strong><br/>
-          <strong>İstanbul Üniversitesi Hukuk Fakültesi mezunu</strong>
-        </p>
+    <!-- HAKKIMDA (açıklama metni KALDIRILDI) -->
+    <section id="hakkinda" class="section" aria-labelledby="hakkinda-title">
+      <h2 id="hakkinda-title">Hakkımda</h2>
+      <div class="meta-row" aria-label="Özet bilgiler">
+        <div class="meta-item"><span class="meta-key">Baro:</span> Çanakkale Barosu • Sicil No: <strong>1111</strong></div>
+        <div class="meta-item"><span class="meta-key">Eğitim:</span> İstanbul Üniversitesi Hukuk Fakültesi</div>
       </div>
+      <!-- İstek üzerine Hakkımda paragrafı tamamen kaldırıldı -->
     </section>
 
-    <!-- İLETİŞİM (sade) -->
-    <section id="iletisim" style="margin-top:24px">
-      <h2>İletişim</h2>
-      <div class="card">
-        <p>
-          <strong>E-posta:</strong> <a href="mailto:sertankirik23@gmail.com">sertankirik23@gmail.com</a><br/>
-          <strong>Telefon:</strong> <a href="tel:+905456465233">+90 545 646 52 33</a><br/>
-          <strong>Adres:</strong> Çanakkale (randevu ile ziyaret)
-        </p>
-        <div class="stack-v" style="margin-top:8px">
-          <a class="btn" href="mailto:sertankirik23@gmail.com?subject=Randevu Talebi">E-posta ile Randevu Al</a>
-          <a class="btn outline" href="tel:+905456465233">Telefonla İletişime Geç</a>
-        </div>
+    <!-- RANDEVU -->
+    <section id="randevu" class="section" aria-labelledby="randevu-title">
+      <h2 id="randevu-title">Randevu</h2>
+      <div class="actions" aria-label="Randevu bağlantıları">
+        <a class="badge-link" href="mailto:sertankirik23@gmail.com?subject=Randevu Talebi">E-posta ile Randevu</a>
+        <a class="badge-link alt" href="tel:+905456465233">Telefonla İletişim</a>
       </div>
+      <p class="note">Randevular önceden planlanır; görüşmeler randevu ile gerçekleştirilir.</p>
+    </section>
 
-      <div class="callout" style="margin-top:16px">
-        Bu sitedeki bilgiler genel nitelikte olup <strong>hukuki danışmanlık</strong> değildir. Avukat–müvekkil ilişkisi
-        yalnızca yazılı vekâlet ve ücret sözleşmesi ile başlar. KVKK gereği, kişisel verileriniz yalnızca iletişim
-      amacıyla ve ölçülü şekilde işlenir.
+    <!-- İLETİŞİM -->
+    <section id="iletisim" class="section" aria-labelledby="iletisim-title">
+      <h2 id="iletisim-title">İletişim</h2>
+      <div class="meta-row" aria-label="İletişim bilgileri">
+        <div class="meta-item"><span class="meta-key">E-posta:</span> <a href="mailto:sertankirik23@gmail.com">sertankirik23@gmail.com</a></div>
+        <div class="meta-item"><span class="meta-key">Telefon:</span> <a href="tel:+905456465233">+90 545 646 52 33</a></div>
+        <div class="meta-item"><span class="meta-key">Adres:</span> Çanakkale (randevu ile ziyaret)</div>
       </div>
+      <p class="note">Bu sitedeki bilgiler genel bilgilendirme amaçlıdır ve <strong>hukuki danışmanlık</strong> teşkil etmez. Avukat–müvekkil ilişkisi yalnızca yazılı vekâlet ve ücret sözleşmesi ile başlar. KVKK gereği bilgileriniz yalnızca iletişim amacıyla ve ölçülü olarak işlenir.</p>
     </section>
   </main>
 
@@ -219,8 +223,38 @@
   </footer>
 
   <script>
-    // yıl
+    // Yıl
     document.getElementById('yil').textContent = new Date().getFullYear();
+
+    // Menü: tıkla-aç/kapat + dışarı tıklayınca veya ESC ile kapat
+    const menuBtn = document.getElementById('menuBtn');
+    const menuPanel = document.getElementById('menuPanel');
+
+    function closeMenu(){
+      menuPanel.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu(){
+      menuPanel.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+    function toggleMenu(e){
+      e.stopPropagation();
+      menuPanel.classList.toggle('open');
+      const expanded = menuPanel.classList.contains('open');
+      menuBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    document.addEventListener('click', (e)=>{
+      if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)){
+        closeMenu();
+      }
+    });
+    document.addEventListener('keydown', (e)=>{
+      if (e.key === 'Escape') closeMenu();
+    });
   </script>
 </body>
 </html>
+
