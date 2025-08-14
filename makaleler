@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Makaleler | Avukat Sertan KIRIK</title>
+  <meta name="description" content="Avukat Sertan KIRIK'ın makaleleri ve hukuk notları." />
+  <style>
+    :root{ --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f1f5f9; --bg-card:#ffffff; --accent:#111827; }
+    *{box-sizing:border-box}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:var(--ink); background:var(--bg); line-height:1.65;}
+    header{background:#fff; border-bottom:1px solid var(--line); padding:18px 20px}
+    .wrap{max-width:1060px; margin:0 auto; padding:24px 20px}
+    h1{margin:0; font-size:28px}
+    .muted{color:var(--muted)}
+    .toolbar{display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap}
+    .search{border:1px solid var(--line); background:#fff; border-radius:10px; padding:6px 10px}
+    .search input{border:none; outline:none; min-width:260px; font-size:14px}
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(280px,1fr))}
+    .card{background:var(--bg-card); border:1px solid var(--line); border-radius:14px; padding:16px}
+    .card h3{margin:0 0 6px 0; font-size:18px}
+    .badge{display:inline-block; font-size:12px; color:#fff; background:var(--accent); border-radius:999px; padding:2px 8px}
+    a{color:inherit; text-decoration:none}
+    a:hover{text-decoration:underline}
+    .hidden{display:none !important}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Makaleler</h1>
+      <div class="toolbar">
+        <span class="muted">Hukuk yazıları ve karar değerlendirmeleri</span>
+        <span class="search">🔎 <input id="q" type="search" placeholder="Makalelerde ara..." aria-label="Makalelerde ara" /></span>
+        <a id="back" href="#">← Ana sayfa</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid" id="posts">
+      <article class="card" data-post>
+        <h3>İşe İade Davalarında Süre Yönetimi</h3>
+        <p class="muted">İş Kanunu çerçevesinde başvuru süreleri, arabuluculuk ve dava stratejileri.</p>
+        <div><span class="badge">İş Hukuku</span></div>
+      </article>
+      <article class="card" data-post>
+        <h3>Kira Tespit Davaları: Pratik Notlar</h3>
+        <p class="muted">HMK ve TBK kapsamında ispat, bilirkişi ve emsal kira analizi.</p>
+        <div><span class="badge">Gayrimenkul</span></div>
+      </article>
+      <article class="card" data-post>
+        <h3>Trafik Kazalarında Manevi Tazminat Ölçütleri</h3>
+        <p class="muted">Yargıtay içtihadı ışığında takdir kriterleri ve güncel uygulama.</p>
+        <div><span class="badge">Tazminat</span></div>
+      </article>
+      <article class="card" data-post>
+        <h3>İptal Davalarında Yürütmenin Durdurulması</h3>
+        <p class="muted">Danıştay ve BİM karar örnekleriyle.</p>
+        <div><span class="badge">İdare Hukuku</span></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    // Filtreleme
+    const q = document.getElementById('q');
+    const posts = [...document.querySelectorAll('[data-post]')];
+    const norm = s => s.toLocaleLowerCase('tr-TR');
+    q.addEventListener('input', e=>{
+      const needle = norm(e.target.value.trim());
+      posts.forEach(p=>{
+        const hit = needle==="" || norm(p.textContent).includes(needle);
+        p.classList.toggle('hidden', !hit);
+      });
+    });
+
+    // Ana sayfa linki (bulunduğun path’e göre)
+    document.getElementById('back')?.addEventListener('click', function(e){
+      e.preventDefault();
+      const { origin, pathname } = window.location;
+      const base = pathname.replace(/makaleler\.html$/i, '').replace(/\/?$/, '/');
+      const url = origin + base + 'index.html';
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
