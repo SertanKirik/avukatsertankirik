@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Avukat Sertan Kırık | Çanakkale Barosu</title>
-  <meta name="description" content="Avukat Sertan Kırık — Çanakkale Barosu. Ticaret, İş, Aile, Ceza, İcra-İflas, Gayrimenkul ve İdare Hukuku alanlarında danışmanlık ve dava takibi." />
-  <meta property="og:title" content="Avukat Sertan Kırık | Çanakkale Barosu" />
+  <title>Avukat Sertan KIRIK | Çanakkale Barosu</title>
+  <meta name="description" content="Avukat Sertan KIRIK — Çanakkale Barosu. Hukuki danışmanlık ve dava takibi: Ticaret, İş, Aile, Ceza, İcra-İflas, Gayrimenkul, İdare Hukuku." />
+  <meta property="og:title" content="Avukat Sertan KIRIK | Çanakkale Barosu" />
   <meta property="og:description" content="Çanakkale’de hukuki danışmanlık, sözleşme ve dava hizmetleri." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true" />
   <meta name="color-scheme" content="light only" />
-
   <style>
     :root{
       --ink:#0f172a;       /* slate-900 */
       --muted:#64748b;     /* slate-500 */
       --line:#e2e8f0;      /* slate-200 */
-      --bg:#f1f5f9;        /* NEW light-gray background */
-      --bg-card:#ffffff;   /* white cards */
-      --accent:#111827;    /* gray-900 */
+      --bg:#f1f5f9;        /* page bg (light gray) */
+      --bg-card:#ffffff;   /* cards */
+      --accent:#111827;    /* buttons / emphasis */
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -31,220 +30,285 @@
     header{
       position:relative;
       display:grid; place-items:center;
-      padding:72px 20px;
-      min-height:clamp(360px, 48vh, 520px);
+      padding:70px 20px 56px;
+      min-height:clamp(420px, 52vh, 560px);
       text-align:center; color:#fff;
       border-bottom:1px solid var(--line);
       background:url('https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true') center/cover no-repeat;
     }
     header::before{
-      content:"";
-      position:absolute; inset:0;
+      content:""; position:absolute; inset:0;
       background:linear-gradient(180deg, rgba(0,0,0,.62), rgba(0,0,0,.58));
       z-index:1;
     }
     .header-content{position:relative; z-index:2; max-width:980px}
-    header h1{
-      margin:12px 0 6px 0;
-      font-size:clamp(32px, 6vw, 48px);
-      line-height:1.2;
-      text-shadow:0 2px 10px rgba(0,0,0,.45);
-    }
-    header .sub{
-      margin:0 0 12px 0;
-      font-size:clamp(16px, 2.4vw, 18px);
-      color:#fff;
-      text-shadow:0 1px 3px rgba(0,0,0,.5);
-    }
-    /* HIGH VISIBILITY BADGE */
-    header .badge{
+
+    /* top badge: Çanakkale Barosu */
+    .badge{
       display:inline-block;
       padding:7px 14px;
       border-radius:999px;
-      font-size:13px;
-      font-weight:600;
-      letter-spacing:.2px;
-      color:#fff;
-      background:rgba(0,0,0,.7);
-      border:1px solid rgba(255,255,255,.88);
+      font-size:13px; font-weight:700; letter-spacing:.25px;
+      color:#fff; background:rgba(0,0,0,.75);
+      border:1px solid rgba(255,255,255,.9);
       box-shadow:0 4px 16px rgba(0,0,0,.35);
       text-shadow:0 1px 2px rgba(0,0,0,.55);
       backdrop-filter:saturate(140%) blur(1px);
     }
-    .stack{
-      display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:16px;
+    /* new title stack */
+    .title-top{ margin:14px 0 4px; font-size:clamp(16px, 3.5vw, 20px); font-weight:600; text-transform:uppercase; letter-spacing:.4px; }
+    h1{
+      margin:0 0 8px 0; line-height:1.15;
+      font-size:clamp(34px, 6.3vw, 50px);
+      text-shadow:0 2px 10px rgba(0,0,0,.45);
+    }
+    .subtitle{
+      margin:0 0 18px 0; font-size:clamp(16px, 2.6vw, 18px);
+      color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5);
     }
 
-    /* ---------- Buttons ---------- */
+    .stack-v{ display:flex; flex-direction:column; align-items:center; gap:10px; }
+
+    /* Buttons */
     .btn{
-      display:inline-block;
-      padding:10px 16px;
-      border:1px solid var(--accent);
-      border-radius:10px;
-      text-decoration:none;
+      display:inline-block; text-decoration:none;
+      padding:10px 16px; border-radius:10px; border:1px solid var(--accent);
       color:#fff; background:var(--accent);
       transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      min-width:200px; text-align:center;
     }
     .btn:hover{transform:translateY(-1px); box-shadow:0 8px 22px rgba(15,23,42,.14)}
-    .btn:active{transform:translateY(0); box-shadow:none}
-    .btn.outline{background:transparent; color:#fff; border-color:rgba(255,255,255,.85)}
+    .btn.outline{background:transparent; color:#fff; border-color:rgba(255,255,255,.9)}
     .btn.outline:hover{background:rgba(255,255,255,.1)}
 
-    /* ---------- Nav ---------- */
+    /* Nav */
     nav{
       position:sticky; top:0; z-index:9;
-      display:flex; gap:8px; justify-content:center; flex-wrap:wrap;
+      display:flex; gap:8px; justify-content:center; flex-wrap:wrap; align-items:center;
       padding:10px 12px; border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.82);
-      backdrop-filter:saturate(140%) blur(6px);
+      background:rgba(255,255,255,.86); backdrop-filter:saturate(140%) blur(6px);
     }
     nav a{
       text-decoration:none; color:var(--ink);
       padding:8px 10px; border-radius:8px;
     }
     nav a:hover{background:#e2e8f0}
-    section{scroll-margin-top:80px}
+    .search{
+      display:flex; align-items:center; gap:8px; margin-left:8px;
+      border:1px solid var(--line); background:#fff; border-radius:10px; padding:6px 10px;
+    }
+    .search input{
+      border:none; outline:none; min-width:220px; font-size:14px;
+    }
+    section{scroll-margin-top:84px}
 
-    /* ---------- Layout ---------- */
+    /* Layout */
     .wrap{max-width:1060px; margin:0 auto; padding:32px 20px}
     h2{margin:0 0 14px 0; font-size:26px}
     .muted{color:var(--muted)}
     .note{font-size:14px; color:var(--muted)}
 
-    /* ---------- Grid & Cards ---------- */
-    .grid{
-      display:grid; gap:16px;
-      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    }
+    /* Grid & Cards */
+    .grid{ display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); }
     .card{
-      border:1px solid var(--line);
-      border-radius:14px; padding:16px; background:var(--bg-card);
+      border:1px solid var(--line); border-radius:14px; padding:16px; background:var(--bg-card);
       transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
     }
     .card h3{margin:0 0 6px 0; font-size:18px}
-    .card:hover{
-      border-color:#cbd5e1;
-      transform:translateY(-2px);
-      box-shadow:0 10px 28px rgba(15,23,42,.07);
-    }
+    .card:hover{ border-color:#cbd5e1; transform:translateY(-2px); box-shadow:0 10px 28px rgba(15,23,42,.07); }
 
-    /* ---------- Callout (Uyarılar) ---------- */
+    /* Callout */
     .list-clean{margin:0; padding-left:18px}
     .callout{
-      background:#e2e8f0;
-      border:1px solid #cbd5e1;
-      border-left:4px solid #334155;
-      border-radius:10px;
-      padding:12px 14px;
+      background:#e2e8f0; border:1px solid #cbd5e1; border-left:4px solid #334155;
+      border-radius:10px; padding:12px 14px;
     }
 
-    /* ---------- Footer ---------- */
     footer{
       padding:28px 20px; text-align:center; color:var(--muted);
       background:var(--bg); border-top:1px solid var(--line);
     }
 
-    /* ---------- Small tweaks ---------- */
+    /* helpers */
     a{color:inherit}
     strong{font-weight:600}
+    .hidden{display:none !important}
   </style>
 
-  <!-- Structured Data -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LegalService",
-    "name": "Avukat Sertan Kırık",
+    "name": "Avukat Sertan KIRIK",
     "url": "https://sertankirik.github.io",
     "image": "https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true",
     "areaServed": { "@type": "Place", "name": "Çanakkale" },
     "address": { "@type": "PostalAddress", "addressLocality": "Çanakkale", "addressCountry": "TR" },
     "telephone": "+90 545 646 52 33",
     "email": "sertankirik23@gmail.com",
-    "priceRange": "₺₺",
-    "memberOf": { "@type": "Organization", "name": "Çanakkale Barosu" }
+    "memberOf": { "@type": "Organization", "name": "Çanakkale Barosu" },
+    "priceRange": "₺₺"
   }
   </script>
 </head>
 
 <body>
+  <!-- HERO -->
   <header>
     <div class="header-content">
-      <div class="badge">Çanakkale • Hukuki Danışmanlık & Dava Takibi</div>
-      <h1>Avukat Sertan Kırık</h1>
-      <p class="sub">Çanakkale Barosu • Ticaret, İş, Aile, Ceza, İcra-İflas, Gayrimenkul ve İdare Hukuku</p>
-      <div class="stack">
+      <div class="badge">Çanakkale Barosu</div>
+      <div class="title-top">Avukat</div>
+      <h1>Sertan KIRIK</h1>
+      <p class="subtitle">Hukuki Danışmanlık &amp; Dava Takibi</p>
+
+      <div class="stack-v" aria-label="Hızlı işlemler">
         <a class="btn" href="#iletisim">Randevu / İletişim</a>
         <a class="btn outline" href="#calisma-alanlari">Çalışma Alanları</a>
       </div>
     </div>
   </header>
 
-  <nav>
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Ana menü">
     <a href="#hakkinda">Hakkımda</a>
     <a href="#calisma-alanlari">Çalışma Alanları</a>
-    <a href="#danismanlik">Danışmanlık</a>
-    <a href="#uyarilar">Uyarılar</a>
-    <a href="#iletisim">İletişim</a>
+    <a href="makaleler.html" target="_blank" rel="noopener">Makaleler</a>
+    <a href="#yuksek">Yüksek Mahkeme Kararları</a>
+
+    <form class="search" role="search" onsubmit="event.preventDefault();">
+      🔎
+      <input id="siteSearch" type="search" placeholder="Sayfa içinde ara..." aria-label="Sayfa içi arama" />
+    </form>
   </nav>
 
-  <main class="wrap">
-    <section id="hakkinda">
+  <main class="wrap" role="main">
+    <!-- HAKKIMDA -->
+    <section id="hakkinda" data-search>
       <h2>Hakkımda</h2>
-      <p>Av. Sertan Kırık, Çanakkale’de bireylere ve şirketlere <strong>dava takibi</strong>, <strong>sözleşme hazırlanması</strong> ve <strong>hukuki danışmanlık</strong> hizmetleri sunar. Her dosyada müvekkil yararı, zamanında bilgilendirme ve makul ücretlendirme ön plandadır.</p>
-      <p class="muted">Çanakkale Barosu — Sicil No: <strong>1111</strong></p>
-      <p><strong>İstanbul Üniversitesi Hukuk Fakültesi mezunu</strong></p>
+      <div class="card">
+        <p>
+          <strong>Av. Sertan KIRIK</strong>, Çanakkale’de bireylere ve şirketlere
+          <strong>hukuki danışmanlık</strong>, <strong>sözleşme hazırlanması</strong> ve
+          <strong>dava takibi</strong> hizmetleri sunar. Önceliği müvekkil yararı, şeffaf iletişim ve makul
+          ücretlendirmedir.
+        </p>
+        <p class="muted">
+          Çanakkale Barosu • Sicil No: <strong>1111</strong><br/>
+          <strong>İstanbul Üniversitesi Hukuk Fakültesi mezunu</strong>
+        </p>
+      </div>
     </section>
 
-    <section id="calisma-alanlari">
+    <!-- ÇALIŞMA ALANLARI -->
+    <section id="calisma-alanlari" data-search>
       <h2>Çalışma Alanları</h2>
       <div class="grid">
-        <div class="card"><h3>Ticaret ve Sözleşmeler</h3><p>Şirket kuruluşu, BK/TTK sözleşmeleri, tahkim/arabuluculuk ön süreci.</p></div>
-        <div class="card"><h3>İş Hukuku</h3><p>İşe iade, kıdem/ihbar, iş kazası, iç yönetmelik, uyum süreçleri.</p></div>
-        <div class="card"><h3>Aile Hukuku</h3><p>Boşanma, velayet, nafaka, mal rejimi.</p></div>
-        <div class="card"><h3>Ceza Hukuku</h3><p>Soruşturma–kovuşturma, kanun yolları.</p></div>
-        <div class="card"><h3>İcra ve İflas</h3><p>Alacak takibi, itirazın iptali, haciz işlemleri.</p></div>
-        <div class="card"><h3>Gayrimenkul Hukuku</h3><p>Kira tahliye, tapu iptal, komşuluk hukuku.</p></div>
-        <div class="card"><h3>İdare Hukuku</h3><p>İptal davaları, disiplin, vergi–idari itirazlar.</p></div>
-        <div class="card"><h3>Tazminat Hukuku</h3><p>Trafik kazası, hekim sorumluluğu, maddi–manevi tazminat.</p></div>
+        <article class="card" data-search>
+          <h3>Ticaret ve Sözleşmeler</h3>
+          <p>Şirket kuruluşu, BK/TTK sözleşmeleri, tahkim ve arabuluculuk ön süreçleri.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>İş Hukuku</h3>
+          <p>İşe iade, kıdem/ihbar, iş kazası, iç yönetmelik ve uyum süreçleri.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Aile Hukuku</h3>
+          <p>Boşanma, velayet, nafaka, mal rejimi.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Ceza Hukuku</h3>
+          <p>Soruşturma–kovuşturma, kanun yolları.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>İcra ve İflas</h3>
+          <p>Alacak takibi, itirazın iptali, haciz işlemleri.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Gayrimenkul Hukuku</h3>
+          <p>Kira tahliye, tapu iptal, komşuluk hukuku.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>İdare Hukuku</h3>
+          <p>İptal davaları, disiplin, vergi–idari itirazlar.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Tazminat Hukuku</h3>
+          <p>Trafik kazası, hekim sorumluluğu, maddi–manevi tazminat.</p>
+        </article>
       </div>
     </section>
 
-    <section id="danismanlik">
-      <h2>Danışmanlık</h2>
-      <p>Sürekli danışmanlık paketleri ile <em>önleyici hukuk</em> yaklaşımı: risk analizi, sözleşme standardizasyonu, mevzuat uyumu ve kurum içi eğitim hizmetleri sunulmaktadır.</p>
-      <p class="note">Kurumsal danışmanlık için lütfen e-posta üzerinden iletişime geçiniz.</p>
+    <!-- YÜKSEK MAHKEME KARARLARI -->
+    <section id="yuksek" data-search>
+      <h2>Yüksek Mahkeme Kararları</h2>
+      <div class="grid">
+        <article class="card" data-search>
+          <h3>Yargıtay — İş Hukuku</h3>
+          <p>Fesih, fazla mesai, kıdem/ihbar tazminatı ve iş kazası karar özetleri.</p>
+          <p class="note">Not: Bu bölüm bilgilendirme amaçlıdır; somut olay incelemesi gerektirir.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Yargıtay — Aile Hukuku</h3>
+          <p>Boşanma, nafaka, velayet, mal rejimi uyuşmazlıklarına ilişkin içtihat örnekleri.</p>
+        </article>
+        <article class="card" data-search>
+          <h3>Danıştay — İdare Hukuku</h3>
+          <p>İptal davaları, disiplin işlemleri ve vergi uyuşmazlıklarına dair karar notları.</p>
+        </article>
+      </div>
     </section>
 
-    <section id="uyarilar">
-      <h2>Uyarılar</h2>
-      <div class="callout">
+    <!-- İLETİŞİM -->
+    <section id="iletisim" data-search>
+      <h2>İletişim</h2>
+      <div class="card">
+        <p>
+          <strong>E-posta:</strong> <a href="mailto:sertankirik23@gmail.com">sertankirik23@gmail.com</a><br/>
+          <strong>Telefon:</strong> <a href="tel:+905456465233">+90 545 646 52 33</a><br/>
+          <strong>Adres:</strong> Çanakkale (randevu ile ziyaret)
+        </p>
+        <div class="stack-v" style="margin-top:8px">
+          <a class="btn" href="mailto:sertankirik23@gmail.com?subject=Randevu Talebi">E-posta ile Randevu Al</a>
+          <a class="btn outline" href="tel:+905456465233">Telefonla İletişime Geç</a>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:16px">
         <ul class="list-clean">
           <li class="muted">Bu sitede yer alan bilgiler genel nitelikte olup <strong>hukuki danışmanlık</strong> değildir.</li>
-          <li class="muted">İlk iletişim avukat–müvekkil ilişkisi doğurmaz; ilişki yalnızca yazılı vekâlet ve ücret sözleşmesi ile başlar.</li>
-          <li class="muted">KVKK gereği, kişisel verileriniz yalnızca iletişim amacıyla ve ölçülü şekilde işlenir. (Aydınlatma metni eklenecektir.)</li>
+          <li class="muted">Avukat–müvekkil ilişkisi yalnızca yazılı vekâlet ve ücret sözleşmesi ile başlar.</li>
+          <li class="muted">KVKK gereği, kişisel verileriniz yalnızca iletişim amacıyla ve ölçülü şekilde işlenir.</li>
         </ul>
-      </div>
-    </section>
-
-    <section id="iletisim">
-      <h2>İletişim</h2>
-      <p><strong>E-posta:</strong> <a href="mailto:sertankirik23@gmail.com">sertankirik23@gmail.com</a><br/>
-         <strong>Telefon:</strong> <a href="tel:+905456465233">+90 545 646 52 33</a><br/>
-         <strong>Adres:</strong> Çanakkale (randevu ile ziyaret)</p>
-      <div class="stack">
-        <a class="btn" href="mailto:sertankirik23@gmail.com?subject=Randevu Talebi">E-posta ile Randevu Al</a>
-        <a class="btn outline" href="tel:+905456465233">Telefonla İletişime Geç</a>
       </div>
     </section>
   </main>
 
   <footer>
-    © <span id="yil"></span> Avukat Sertan Kırık • Çanakkale Barosu. Tüm hakları saklıdır.
+    © <span id="yil"></span> Avukat Sertan KIRIK • Çanakkale Barosu. Tüm hakları saklıdır.
   </footer>
 
   <script>
+    // yıl
     document.getElementById('yil').textContent = new Date().getFullYear();
+
+    // basit sayfa içi arama: başlık ve paragraf metinlerinde filtre
+    const q = document.getElementById('siteSearch');
+    const searchable = [...document.querySelectorAll('[data-search]')];
+
+    function normalize(t){ return t.toLocaleLowerCase('tr-TR'); }
+    function match(el, term){
+      return normalize(el.textContent).includes(term);
+    }
+    function filter(term){
+      const needle = normalize(term.trim());
+      searchable.forEach(sec=>{
+        // bir bölüm/karteşi içindeki herhangi bir alt elemanda eşleşme varsa göster
+        const any = needle === "" || match(sec, needle);
+        sec.classList.toggle('hidden', !any);
+      });
+    }
+    q.addEventListener('input', (e)=> filter(e.target.value));
   </script>
 </body>
 </html>
+
