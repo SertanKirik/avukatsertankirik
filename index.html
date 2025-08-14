@@ -1,48 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Avukat Sertan Kırık | Çanakkale Barosu</title>
   <meta name="description" content="Avukat Sertan Kırık — Çanakkale Barosu. Ticaret, İş, Aile, Ceza, İcra-İflas, Gayrimenkul ve İdare Hukuku alanlarında danışmanlık ve dava takibi." />
   <meta property="og:title" content="Avukat Sertan Kırık | Çanakkale Barosu" />
   <meta property="og:description" content="Çanakkale’de hukuki danışmanlık, sözleşme ve dava hizmetleri." />
   <meta property="og:type" content="website" />
+  
+  <!-- Inline Styles -->
   <style>
-    :root{--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--bg:#fafafa;--accent:#111827}
-    *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:var(--ink);line-height:1.6;background:#fff}
-    header{padding:56px 20px;text-align:center;background:var(--bg);border-bottom:1px solid var(--line)}
-    h1{margin:0 0 6px 0;font-size:32px}
-    .sub{color:var(--muted);margin:0}
-    nav{display:flex;gap:16px;justify-content:center;padding:12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-    nav a{text-decoration:none;color:var(--ink)}
-    .wrap{max-width:1000px;margin:0 auto;padding:28px 20px}
-    section{margin:36px 0}
-    h2{margin:0 0 12px 0}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .card{border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff}
-    .muted{color:var(--muted)}
-    .badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 10px;font-size:12px;color:var(--muted)}
-    .btn{display:inline-block;padding:10px 16px;border:1px solid var(--accent);border-radius:8px;text-decoration:none;color:#fff;background:var(--accent)}
-    .btn.outline{background:#fff;color:var(--accent)}
-    .stack{display:flex;gap:10px;flex-wrap:wrap}
-    footer{padding:28px 20px;text-align:center;background:var(--bg);color:var(--muted);border-top:1px solid var(--line)}
-    .note{font-size:14px;color:var(--muted)}
+    :root {
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #fafafa;
+      --accent: #111827;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin: 0;
+      color: var(--ink);
+      line-height: 1.6;
+      background: #fff;
+    }
+    header {
+      padding: 56px 20px;
+      text-align: center;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 32px;
+    }
+    .sub {
+      color: var(--muted);
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 28px 20px;
+    }
+    section {
+      margin: 36px 0;
+    }
+    h2 {
+      margin: 0 0 12px 0;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      background: var(--accent);
+    }
+    .btn.outline {
+      background: #fff;
+      color: var(--accent);
+    }
+    .stack {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      background: var(--bg);
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+    }
   </style>
 
- <!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Avukat Sertan Kırık - Çanakkale Barosu'na kayıtlı avukat. Hukuki danışmanlık, dava takibi ve sözleşmeler alanlarında profesyonel destek." />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Av. Sertan Kırık" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>Avukat Sertan Kırık | Çanakkale Hukuk Bürosu</title>
-
-  <!-- Yapısal Veri -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -151,3 +227,4 @@
   </script>
 </body>
 </html>
+
