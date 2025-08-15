@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yüksek Mahkeme Kararları — Avukat Sertan KIRIK</title>
+  <meta name="description" content="Yargıtay, Danıştay ve Anayasa Mahkemesi kararlarından seçmeler. Konuya göre ara ve filtrele." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Yüksek Mahkeme Kararları — Av. Sertan KIRIK" />
+  <meta property="og:description" content="Yargıtay, Danıştay ve AYM kararlarından seçmeler. Konuya göre ara ve filtrele." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sertankirik.github.io/avukatsertankirik/yuksek-mahkeme-kararlari.html" />
+  <meta name="color-scheme" content="light only" />
+  <style>
+    :root{
+      --ink:#0f172a;     /* ana metin */
+      --muted:#64748b;   /* ikincil metin */
+      --line:#e2e8f0;    /* ayraç çizgi */
+      --bg:#f1f5f9;      /* sayfa zemini */
+      --accent:#111827;  /* vurgu / butonlar */
+      --chip:#0b1225;    /* badge tonu */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      margin:0; color:var(--ink); background:var(--bg); line-height:1.65;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Üst şerit */
+    header{
+      padding:48px 20px 36px;
+      background:linear-gradient(180deg,#0f172a,#1f2937);
+      color:#fff; text-align:center; border-bottom:1px solid var(--line);
+    }
+    header h1{ margin:6px 0 6px 0; font-size:clamp(26px, 4vw, 34px) }
+    header p{ margin:0; color:#e5e7eb; font-size:15px }
+
+    .top-links{
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .top-links a{
+      text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.55);
+      padding:7px 12px; border-radius:999px; font-size:14px;
+      background:rgba(255,255,255,.06);
+    }
+    .top-links a:hover{ background:rgba(255,255,255,.12) }
+
+    /* İçerik genel */
+    main.wrap{ max-width:980px; margin:0 auto; padding:28px 16px 40px }
+
+    /* Filtre paneli */
+    .filters{
+      display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px;
+      padding:12px; background:#fff; border:1px solid var(--line); border-radius:14px;
+      box-shadow:0 10px 24px rgba(15,23,42,.06);
+      position:sticky; top:10px; z-index:5;
+    }
+    .filters input, .filters select{
+      width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px;
+      font-size:14px; background:#fff; color:var(--ink);
+    }
+    .filters .hint{ grid-column:1/-1; font-size:13px; color:var(--muted); text-align:right }
+
+    /* Sonuçlar */
+    .results{ margin-top:16px; display:grid; gap:12px }
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 14px 12px;
+      box-shadow:0 10px 24px rgba(15,23,42,.05);
+    }
+    .card h3{ margin:2px 0 6px 0; font-size:18px }
+    .chips{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px }
+    .chip{
+      display:inline-flex; align-items:center; gap:6px; font-size:12px;
+      padding:4px 8px; border-radius:999px; background:#0f172a; color:#fff;
+    }
+    .chip.alt{ background:#334155 }
+    .meta{ font-size:13px; color:var(--muted); margin-bottom:8px }
+    .summary{ margin:8px 0 6px 0; font-size:14px }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap }
+    .btn{
+      text-decoration:none; padding:8px 12px; border-radius:10px; font-size:14px;
+      border:1px solid var(--accent); color:#fff; background:var(--accent);
+    }
+    .btn.ghost{ background:transparent; color:var(--accent) }
+    .empty{ color:var(--muted); padding:18px 10px; text-align:center }
+
+    /* Küçük ekran */
+    @media (max-width:760px){
+      .filters{ grid-template-columns:1fr; top:0 }
+    }
+
+    footer{
+      padding:26px 16px; text-align:center; color:var(--muted);
+      border-top:1px solid var(--line); background:var(--bg);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="top-links">
+      <a href="index.html">← Anasayfa</a>
+      <a href="calisma-alanlari.html">Çalışma Alanları</a>
+      <a href="makaleler.html">Makaleler</a>
+    </div>
+    <h1>Yüksek Mahkeme Kararları</h1>
+    <p>Yargıtay • Danıştay • Anayasa Mahkemesi — anahtar kelime ve mahkemeye göre filtreleyin.</p>
+  </header>
+
+  <main class="wrap" role="main">
+    <!-- Filtreler -->
+    <section class="filters" aria-label="Filtreler">
+      <input id="q" type="search" placeholder="Anahtar kelime (konu, özet, E/K)..." aria-label="Arama" />
+      <select id="mahkeme" aria-label="Mahkeme">
+        <option value="">Tüm Mahkemeler</option>
+        <option>Yargıtay</option>
+        <option>Danıştay</option>
+        <option>Anayasa Mahkemesi</option>
+      </select>
+      <select id="sirala" aria-label="Sırala">
+        <option value="yeni">Tarihe göre (Yeni → Eski)</option>
+        <option value="eski">Tarihe göre (Eski → Yeni)</option>
+      </select>
+      <div class="hint">Not: Buradaki özetler bilgilendirme amaçlıdır; hukuki danışmanlık değildir.</div>
+    </section>
+
+    <!-- Sonuçlar -->
+    <section id="sonuclar" class="results" aria-live="polite" aria-busy="false"></section>
+
+    <div class="empty" id="bosMesaj" style="display:none">Kriterlere uygun karar bulunamadı.</div>
+  </main>
+
+  <footer>
+    © <span id="yil"></span> Avukat Sertan KIRIK • Çanakkale Barosu
+  </footer>
+
+  <script>
+    // Yıl
+    document.getElementById('yil').textContent = new Date().getFullYear();
+
+    // *** VERİLER ***
+    // Kendi kararlarını eklemek için aşağıdaki diziyi düzenle.
+    // "tarih" ISO biçiminde olursa (YYYY-MM-DD) sıralama doğru çalışır.
+    const KAYITLAR = [
+      {
+        mahkeme: "Yargıtay",
+        konu: "Kıdem ve ihbar tazminatı — iş sözleşmesinin haklı feshi",
+        ek: "2021/1234 E., 2022/5678 K.",
+        tarih: "2022-10-14",
+        ozet: "İşçinin haklı nedenle fesih şartlarının oluştuğu hallerde kıdem tazminatına hak kazanılacağı; somut olayda yazılı deliller ve tanık beyanları birlikte değerlendirilerek karar verilmesi gerektiği belirtilmiştir.",
+        kaynak: "https://karararama.yargitay.gov.tr" // resmi bağlantı varsa ekle
+      },
+      {
+        mahkeme: "Danıştay",
+        konu: "İhale hukuku — aşırı düşük teklif açıklaması",
+        ek: "2019/4321 E., 2021/2468 K.",
+        tarih: "2021-06-30",
+        ozet: "Aşırı düşük teklif açıklamasının usulüne uygun alınmaması nedeniyle tesis edilen işlemin hukuka aykırı olduğu; rekabetin sağlanmasına ilişkin ilkelerin gözetilmesi gerektiği vurgulanmıştır.",
+        kaynak: "https://www.danistay.gov.tr"
+      },
+      {
+        mahkeme: "Anayasa Mahkemesi",
+        konu: "İfade özgürlüğü — basın yoluyla eleştiri",
+        ek: "B. No: 2020/9876",
+        tarih: "2022-03-10",
+        ozet: "Kamu yararını ilgilendiren konulardaki ağır eleştirilerin ifade özgürlüğü kapsamında değerlendirilmesi gerektiği; müdahalenin demokratik toplum düzeninde gerekli olmadığı sonucuna varılmıştır.",
+        kaynak: "https://www.anayasa.gov.tr"
+      },
+      {
+        mahkeme: "Yargıtay",
+        konu: "Kira tespiti — emsal kira bedelleri",
+        ek: "2020/7788 E., 2021/9988 K.",
+        tarih: "2021-11-05",
+        ozet: "Kira bedelinin tespitinde emsal sözleşmelerin ve taşınmazın niteliklerinin birlikte değerlendirilmesi gerektiği; bilirkişi raporunun denetime elverişli olması şarttır.",
+        kaynak: "https://karararama.yargitay.gov.tr"
+      }
+    ];
+
+    // *** BASIT DURUM MAKİNESİ ***
+    const elQ = document.getElementById('q');
+    const elMahkeme = document.getElementById('mahkeme');
+    const elSirala = document.getElementById('sirala');
+    const elSonuclar = document.getElementById('sonuclar');
+    const elBos = document.getElementById('bosMesaj');
+
+    function filtreleVeCiz(){
+      elSonuclar.setAttribute('aria-busy', 'true');
+
+      const q = elQ.value.trim().toLowerCase();
+      const m = elMahkeme.value;
+      const s = elSirala.value;
+
+      let liste = KAYITLAR.filter(k => {
+        const metin = (k.konu + ' ' + k.ozet + ' ' + k.ek + ' ' + k.mahkeme).toLowerCase();
+        const mah = m ? k.mahkeme === m : true;
+        const anahtar = q ? metin.includes(q) : true;
+        return mah && anahtar;
+      });
+
+      liste.sort((a,b)=>{
+        const da = a.tarih || '';
+        const db = b.tarih || '';
+        if (s === 'yeni') return (db > da) ? 1 : (db < da ? -1 : 0);
+        return (da > db) ? 1 : (da < db ? -1 : 0);
+      });
+
+      // Çiz
+      elSonuclar.innerHTML = '';
+      if (liste.length === 0){
+        elBos.style.display = 'block';
+        elSonuclar.setAttribute('aria-busy', 'false');
+        return;
+      } else {
+        elBos.style.display = 'none';
+      }
+
+      for (const k of liste){
+        const kart = document.createElement('article');
+        kart.className = 'card';
+        const tarihInsan = k.tarih ? new Date(k.tarih).toLocaleDateString('tr-TR') : '';
+
+        kart.innerHTML = `
+          <div class="chips">
+            <span class="chip" title="Mahkeme">${k.mahkeme}</span>
+            ${tarihInsan ? `<span class="chip alt" title="Tarih">${tarihInsan}</span>` : ``}
+            ${k.ek ? `<span class="chip alt" title="Esas/Karar">${k.ek}</span>` : ``}
+          </div>
+          <h3>${k.konu}</h3>
+          <div class="meta">${k.ek ? `${k.ek} • ` : ''}${tarihInsan}</div>
+          <p class="summary">${k.ozet}</p>
+          <div class="actions">
+            ${k.kaynak ? `<a class="btn" href="${k.kaynak}" target="_blank" rel="noopener">Resmi Kaynak</a>` : ``}
+            <a class="btn ghost" href="index.html">Anasayfa</a>
+          </div>
+        `;
+        elSonuclar.appendChild(kart);
+      }
+
+      elSonuclar.setAttribute('aria-busy', 'false');
+    }
+
+    elQ.addEventListener('input', filtreleVeCiz);
+    elMahkeme.addEventListener('change', filtreleVeCiz);
+    elSirala.addEventListener('change', filtreleVeCiz);
+
+    // İlk çizim
+    filtreleVeCiz();
+  </script>
+</body>
+</html>
+
+
