@@ -8,9 +8,14 @@
   <meta property="og:title" content="Avukat Sertan KIRIK | Çanakkale Barosu" />
   <meta property="og:description" content="Çanakkale’de hukuki danışmanlık, sözleşme ve dava hizmetleri. İletişim ve randevu bilgileri." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true" />
+  <meta property="og:url" content="https://sertankirik.github.io/avukatsertankirik/" />
+  <meta property="og:image" content="https://sertankirik.github.io/avukatsertankirik/romancoutr.webp" />
   <meta name="robots" content="index, follow" />
   <meta name="color-scheme" content="light only" />
+
+  <!-- Kahraman görselini önceden indir (hızlı LCP için) -->
+  <link rel="preload" as="image" href="romancoutr.webp" />
+
   <style>
     :root{
       --ink:#0f172a;     /* ana metin */
@@ -54,7 +59,8 @@
       position:relative; display:grid; place-items:center;
       padding:70px 20px 56px; min-height:clamp(420px, 52vh, 560px);
       text-align:center; color:#fff; border-bottom:1px solid var(--line);
-      background:url('https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true') center/cover no-repeat;
+      /* Görseli yerelden çağır (yönlendirme gecikmesini kaldırır) */
+      background:url('romancoutr.webp') center/cover no-repeat;
     }
     header::before{
       content:""; position:absolute; inset:0;
@@ -77,7 +83,6 @@
       margin:0 0 8px 0; line-height:1.15;
       font-size:clamp(36px, 6.2vw, 50px); font-weight:700; text-shadow:0 2px 10px rgba(0,0,0,.45);
     }
-    /* İsim biçimi: “Sertan KIRIK” (KIRIK büyük) */
     .name .last{ text-transform:uppercase; letter-spacing:.4px; }
 
     .subtitle{
@@ -96,10 +101,9 @@
     .btn.outline:hover{ background:rgba(255,255,255,.1); }
 
     /* ---------- İçerik ---------- */
-    section{ scroll-margin-top:84px; }
+    section{ scroll-margin-top:84px; content-visibility:auto; contain-intrinsic-size:800px; }
     .wrap{ max-width:880px; margin:0 auto; padding:38px 20px; }
 
-    /* Profesyonel bölüm başlıkları ve ince ayraçlar */
     .section{
       padding:22px 0 8px;
       border-bottom:1px solid var(--line);
@@ -111,9 +115,8 @@
       display:flex; flex-wrap:wrap; gap:14px 22px; font-size:15px; color:var(--muted);
     }
     .meta-item{ display:flex; gap:8px; align-items:center; }
-    .meta-key{ font-weight:600; color:#475569; } /* koyu gri */
+    .meta-key{ font-weight:600; color:#475569; }
 
-    /* Satır içi aksiyon alanları */
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:8px; }
     .badge-link{
       display:inline-flex; align-items:center; gap:8px;
@@ -126,10 +129,8 @@
     }
     .badge-link:hover{ transform:translateY(-1px); box-shadow:0 8px 22px rgba(15,23,42,.12); }
 
-    /* Uyarı/Not alanı (metinsiz sade çizgi görünümü) */
     .note{ font-size:14px; color:var(--muted); margin-top:12px; }
 
-    /* Footer */
     footer{
       padding:28px 20px; text-align:center; color:var(--muted);
       background:var(--bg); border-top:1px solid var(--line);
@@ -146,7 +147,7 @@
     "@type": "LegalService",
     "name": "Avukat Sertan KIRIK",
     "url": "https://sertankirik.github.io/avukatsertankirik/",
-    "image": "https://github.com/SertanKirik/avukatsertankirik/blob/main/romancoutr.webp?raw=true",
+    "image": "https://sertankirik.github.io/avukatsertankirik/romancoutr.webp",
     "areaServed": { "@type": "Place", "name": "Çanakkale" },
     "address": { "@type": "PostalAddress", "addressLocality": "Çanakkale", "addressCountry": "TR" },
     "telephone": "+90 545 646 52 33",
@@ -186,14 +187,13 @@
 
   <!-- SADE İÇERİK -->
   <main class="wrap" role="main">
-    <!-- HAKKIMDA (açıklama metni KALDIRILDI) -->
+    <!-- HAKKIMDA -->
     <section id="hakkinda" class="section" aria-labelledby="hakkinda-title">
       <h2 id="hakkinda-title">Hakkımda</h2>
       <div class="meta-row" aria-label="Özet bilgiler">
         <div class="meta-item"><span class="meta-key">Baro:</span> Çanakkale Barosu • Sicil No: <strong>1111</strong></div>
         <div class="meta-item"><span class="meta-key">Eğitim:</span> İstanbul Üniversitesi Hukuk Fakültesi</div>
       </div>
-      <!-- İstek üzerine Hakkımda paragrafı tamamen kaldırıldı -->
     </section>
 
     <!-- RANDEVU -->
@@ -234,15 +234,11 @@
       menuPanel.classList.remove('open');
       menuBtn.setAttribute('aria-expanded', 'false');
     }
-    function openMenu(){
-      menuPanel.classList.add('open');
-      menuBtn.setAttribute('aria-expanded', 'true');
-    }
     function toggleMenu(e){
       e.stopPropagation();
-      menuPanel.classList.toggle('open');
-      const expanded = menuPanel.classList.contains('open');
-      menuBtn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      const willOpen = !menuPanel.classList.contains('open');
+      menuPanel.classList.toggle('open', willOpen);
+      menuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     }
 
     menuBtn.addEventListener('click', toggleMenu);
@@ -257,4 +253,5 @@
   </script>
 </body>
 </html>
+
 
